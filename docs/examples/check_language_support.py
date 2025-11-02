@@ -13,6 +13,7 @@ Example:
 
 import asyncio
 import sys
+import traceback
 
 from moviebox_api import (
     DownloadableMovieFilesDetail,
@@ -21,8 +22,10 @@ from moviebox_api import (
     SubjectType,
 )
 
-# Constants for French language detection
-FRENCH_LANGUAGE_CODES = ['fr', 'fre']
+# Constants for French language detection (ISO 639-1 and ISO 639-2 codes)
+# ISO 639-1: fr (2-letter code)
+# ISO 639-2: fre/fra (3-letter codes - both bibliographic and terminological)
+FRENCH_LANGUAGE_CODES = ['fr', 'fre', 'fra']
 
 
 async def check_movie_languages(title: str, year: int = None):
@@ -155,7 +158,6 @@ async def check_movie_languages(title: str, year: int = None):
         
     except Exception as e:
         print(f"\n❌ Error: {e}")
-        import traceback
         traceback.print_exc()
         return
 
