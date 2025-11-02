@@ -161,7 +161,12 @@ class PostListItemUserModel(BaseModel):
 
 
 class PostListMediaModel(BaseModel):
-    """`.resData.postList.items.0.media`"""
+    """`.resData.postList.items.0.media`
+    
+    Note: The `audio` field contains media metadata but does NOT provide
+    selectable audio track options for downloads. Audio tracks are embedded
+    in the video files provided by the `downloads` field in DownloadableFilesMetadata.
+    """
 
     audio: list
     cover: ContentImageModel | str | None

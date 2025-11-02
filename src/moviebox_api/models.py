@@ -270,6 +270,22 @@ class CaptionFileMetadata(BaseFileMetadata):
 
 
 class DownloadableFilesMetadata(BaseModel):
+    """Metadata for downloadable media and caption files.
+    
+    Attributes:
+        downloads: List of video files at different quality levels (resolution).
+                   Each video file contains embedded audio track(s).
+        captions: List of subtitle/caption files in different languages.
+                  Supports multiple languages including French, Spanish, etc.
+        limited: Whether the content has download limitations
+        limitedCode: Code related to download limitations
+        hasResource: Whether downloadable resources are available
+        
+    Note: The API does NOT provide separate audio track selection.
+          Audio tracks are embedded in the video files.
+          To get French audio (VF), search for "Movie Title VF" or check
+          if the downloaded video contains multiple audio tracks.
+    """
     downloads: list[MediaFileMetadata]
     captions: list[CaptionFileMetadata]
     limited: bool

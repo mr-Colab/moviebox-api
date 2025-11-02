@@ -42,13 +42,15 @@ Search, discover, download, and stream movies & TV series with subtitles
 ## ✨ Features
 
 - 🎬 **Download Movies & TV Series** - High-quality downloads with multiple resolution options
-- 📝 **Subtitle Support** - Download subtitles in multiple languages
+- 📝 **Subtitle Support** - Download subtitles in multiple languages (including French, Spanish, etc.)
 - 🎥 **Stream with MPV or VLC** - Watch directly without downloading (CLI only)
 - ⚡ **Super Fast Downloads** - Over 5x faster than standard downloads
 - 🔄 **Async & Sync Support** - Fully asynchronous with synchronous fallback
 - 🎯 **Interactive Menu** - User-friendly TUI for easy navigation
 - 🔍 **Search & Discovery** - Find movies, trending content, and popular searches
-- 🛠️ **Developer-Friendly** - Clean Python API with Pydantic models 
+- 🛠️ **Developer-Friendly** - Clean Python API with Pydantic models
+
+> **Note on Audio Languages:** The API provides subtitle files in multiple languages but does not support selecting audio language tracks (e.g., VF vs VO). Audio tracks are embedded in video files. See [Audio Language Support Documentation](./docs/AUDIO_LANGUAGE_SUPPORT.md) for details. 
 
 
 
@@ -672,13 +674,34 @@ asyncio.run(main())
 For comprehensive documentation with more examples:
 
 - **[Full API Documentation](./docs/README.md)**
+- **[Audio Language Support](./docs/AUDIO_LANGUAGE_SUPPORT.md)** - Information about subtitle and audio language options
 - **[Example Scripts](./docs/examples/)**
   - [Download Movie CLI](./docs/examples/download-movie-cli.py)
   - [Download Series CLI](./docs/examples/download-series-cli.py)
+  - [Check Language Support](./docs/examples/check_language_support.py) - Verify available subtitle languages
   - [Extractor Benchmark](./docs/examples/extractors-benchmark.py)
 
 
 ## ⚙️ Advanced Configuration
+
+### Language Support
+
+**Subtitles:** The API supports downloading subtitles in multiple languages including English, French, Spanish, and more. Use the `--language` flag:
+
+```sh
+# Download with French subtitles
+moviebox download-movie "Avatar" --language French
+
+# Download with Spanish subtitles  
+moviebox download-movie "Avatar" --language Spanish
+```
+
+**Audio Tracks:** The API does not support selecting audio language tracks (e.g., VF/VO). Audio tracks are embedded in the video files. For more details, see the [Audio Language Support documentation](./docs/AUDIO_LANGUAGE_SUPPORT.md).
+
+To check available language options for a movie:
+```sh
+python docs/examples/check_language_support.py "Avatar"
+```
 
 ### Using Mirror Hosts
 
