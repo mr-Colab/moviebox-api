@@ -21,6 +21,9 @@ from moviebox_api import (
     SubjectType,
 )
 
+# Constants for French language detection
+FRENCH_LANGUAGE_CODES = ['fr', 'fre']
+
 
 async def check_movie_languages(title: str, year: int = None):
     """
@@ -102,7 +105,7 @@ async def check_movie_languages(title: str, year: int = None):
             french_found = False
             for i, caption in enumerate(details.captions, 1):
                 size_kb = caption.size / 1024
-                is_french = caption.lan.lower() in ['fr', 'fre']
+                is_french = caption.lan.lower() in FRENCH_LANGUAGE_CODES
                 if is_french:
                     french_found = True
                     marker = "🇫🇷"
@@ -145,7 +148,7 @@ async def check_movie_languages(title: str, year: int = None):
         print(f"{'='*80}")
         print("📋 SUMMARY:")
         print(f"{'='*80}")
-        has_french_subs = any(c.lan.lower() in ['fr', 'fre'] for c in details.captions)
+        has_french_subs = any(c.lan.lower() in FRENCH_LANGUAGE_CODES for c in details.captions)
         print(f"✅ French Subtitles: {'YES' if has_french_subs else 'NO'}")
         print("❌ French Audio Selection: NO (not supported by API)")
         print(f"{'='*80}\n")
