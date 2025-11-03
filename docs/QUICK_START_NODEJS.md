@@ -24,8 +24,11 @@ async function callMovieBoxAPI(script) {
   return new Promise((resolve, reject) => {
     const python = spawn('python3', ['-c', script]);
     let output = '';
+    let errorOutput = '';
     
     python.stdout.on('data', (data) => output += data.toString());
+    python.stderr.on('data', (data) => errorOutput += data.toString());
+    
     python.on('close', (code) => {
       if (code === 0) {
         try {
@@ -34,7 +37,8 @@ async function callMovieBoxAPI(script) {
           resolve(output);
         }
       } else {
-        reject(new Error('Failed'));
+        const errorMsg = errorOutput || 'Python script failed';
+        reject(new Error(`MovieBox API Error (exit code ${code}): ${errorMsg}`));
       }
     });
   });

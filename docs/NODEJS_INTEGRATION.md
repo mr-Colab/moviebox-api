@@ -134,7 +134,8 @@ class MovieBoxClient {
 
       python.on('close', (code) => {
         if (code !== 0) {
-          reject(new Error(`Python script failed: ${stderr}`));
+          const errorMsg = stderr || stdout || 'Unknown error';
+          reject(new Error(`Python script failed with exit code ${code}: ${errorMsg}`));
         } else {
           try {
             const result = JSON.parse(stdout);
@@ -671,6 +672,7 @@ asyncio.run(main())
     const python = spawn('python3', ['-c', script]);
     
     let finalResult = null;
+    let errorOutput = '';
     
     python.stdout.on('data', (data) => {
       const lines = data.toString().split('\n').filter(line => line.trim());
@@ -693,14 +695,15 @@ asyncio.run(main())
     });
     
     python.stderr.on('data', (data) => {
-      console.error('Python Error:', data.toString());
+      errorOutput += data.toString();
     });
     
     python.on('close', (code) => {
       if (code === 0 && finalResult) {
         resolve(finalResult);
       } else if (code !== 0) {
-        reject(new Error(`Download failed with code ${code}`));
+        const errorMsg = errorOutput || 'Unknown error occurred during download';
+        reject(new Error(`Download failed with exit code ${code}: ${errorMsg}`));
       }
     });
   });
