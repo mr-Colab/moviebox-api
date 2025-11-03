@@ -672,6 +672,7 @@ asyncio.run(main())
 For comprehensive documentation with more examples:
 
 - **[Full API Documentation](./docs/README.md)**
+- **[Node.js Integration Guide](./docs/NODEJS_INTEGRATION.md)** - Complete guide for integrating with Node.js/JavaScript
 - **[Example Scripts](./docs/examples/)**
   - [Download Movie CLI](./docs/examples/download-movie-cli.py)
   - [Download Series CLI](./docs/examples/download-series-cli.py)
