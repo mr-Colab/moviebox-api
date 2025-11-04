@@ -48,7 +48,8 @@ Search, discover, download, and stream movies & TV series with subtitles
 - 🔄 **Async & Sync Support** - Fully asynchronous with synchronous fallback
 - 🎯 **Interactive Menu** - User-friendly TUI for easy navigation
 - 🔍 **Search & Discovery** - Find movies, trending content, and popular searches
-- 🛠️ **Developer-Friendly** - Clean Python API with Pydantic models 
+- 🛠️ **Developer-Friendly** - Clean Python API with Pydantic models
+- 💬 **WhatsApp Bot Ready** - 🆕 Node.js wrapper for easy WhatsApp bot integration
 
 
 
@@ -174,6 +175,39 @@ async def main():
 
 asyncio.run(main())
 ```
+
+### Node.js / WhatsApp Bot Example
+
+```javascript
+// Import the WhatsApp helper
+const WhatsAppMovieHelper = require('./nodejs/whatsapp-helper');
+
+const movieHelper = new WhatsAppMovieHelper({ maxResults: 5 });
+
+// Handle WhatsApp messages
+async function handleMessage(userMessage) {
+  if (userMessage.startsWith('/search ')) {
+    const query = userMessage.substring(8);
+    return await movieHelper.searchAndFormat(query, 'all');
+  }
+  
+  if (userMessage === '/trending') {
+    return await movieHelper.getTrendingFormatted(10);
+  }
+  
+  if (userMessage === '/help') {
+    return movieHelper.getHelpMessage();
+  }
+}
+
+// Usage with whatsapp-web.js or Baileys
+client.on('message', async (msg) => {
+  const response = await handleMessage(msg.body);
+  await msg.reply(response);
+});
+```
+
+**See [nodejs/README.md](./nodejs/README.md) for complete WhatsApp bot integration guide.**
 
 
 
@@ -674,10 +708,12 @@ For comprehensive documentation with more examples:
 - **[Full API Documentation](./docs/README.md)**
 - **[Node.js Integration Guide](./docs/NODEJS_INTEGRATION.md)** - Complete guide for integrating with Node.js/JavaScript
 - **[Quick Start - Node.js](./docs/QUICK_START_NODEJS.md)** - Get started in 5 minutes with simple examples
+- **[Node.js WhatsApp Bot Integration](./nodejs/README.md)** - 🆕 Ready-to-use Node.js wrapper for WhatsApp bots
 - **[Example Scripts](./docs/examples/)**
   - [Download Movie CLI](./docs/examples/download-movie-cli.py)
   - [Download Series CLI](./docs/examples/download-series-cli.py)
   - [Extractor Benchmark](./docs/examples/extractors-benchmark.py)
+  - [Node.js Examples](./nodejs/examples/) - 🆕 WhatsApp bot examples
 
 
 ## ⚙️ Advanced Configuration
