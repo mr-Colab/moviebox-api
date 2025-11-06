@@ -1,0 +1,57 @@
+{
+  "name": "moviebox-api-nodejs",
+  "version": "1.0.0",
+  "description": "Node.js wrapper for MovieBox API - Perfect for WhatsApp bot integration",
+  "main": "moviebox-client.js",
+  "scripts": {
+    "test": "node tests/test-client.js",
+    "example:simple": "node examples/simple-search.js",
+    "example:advanced": "node examples/advanced-search.js",
+    "example:whatsapp": "node examples/whatsapp-bot-example.js"
+  },
+  "keywords": [
+    "moviebox",
+    "movies",
+    "tv-series",
+    "whatsapp",
+    "bot",
+    "api",
+    "wrapper",
+    "search"
+  ],
+  "author": "MovieBox API Contributors",
+  "license": "Unlicense",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mr-Colab/moviebox-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mr-Colab/moviebox-api/issues"
+  },
+  "homepage": "https://github.com/mr-Colab/moviebox-api#readme",
+  "peerDependencies": {
+    "whatsapp-web.js": "^1.x",
+    "@whiskeysockets/baileys": "^6.x"
+  },
+  "peerDependenciesMeta": {
+    "whatsapp-web.js": {
+      "optional": true
+    },
+    "@whiskeysockets/baileys": {
+      "optional": true
+    }
+  },
+  "files": [
+    "moviebox-client.js",
+    "whatsapp-helper.js",
+    "examples/",
+    "README.md"
+  ],
+  "directories": {
+    "example": "examples",
+    "test": "tests"
+  }
+}
