@@ -16,29 +16,6 @@ Search, discover, download, and stream movies & TV series with subtitles
 
 </div>
 
-
-
-##  Table of Contents
-
-- [Features](#-features)
-- [Installation](#-installation)
-  - [For Users (CLI)](#for-users-cli)
-  - [For Developers](#for-developers)
-  - [Media Player (Optional)](#media-players-optional-for-streaming)
-  - [Termux Support](#termux-support)
-- [Quick Start](#-quick-start)
-  - [Interactive Menu (Easiest)](#interactive-menu-easiest)
-  - [Command Line](#command-line-examples)
-  - [Python API](#python-api-example)
-- [Usage](#-usage)
-  - [Command Line Interface](#-command-line-interface)
-  - [Python API](#-python-api)
-- [Documentation](#-documentation)
-- [Advanced Configuration](#-advanced-configuration)
-- [Disclaimer](#-disclaimer)
-
-
-
 ## Features
 
 -  **Download Movies & TV Series** - High-quality downloads with multiple resolution options
@@ -777,6 +754,7 @@ We appreciate all contributions to this project! Thank you to everyone who has h
 
 <div align="center">
 
+---
 **Made with ❤️**
 
 </div>
